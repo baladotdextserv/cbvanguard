@@ -1,0 +1,130 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|c:\\users\\91807\\desktop\\new api project\\focustariffapi\\focustariff\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|solutionrelative:focustariff\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|c:\\users\\91807\\desktop\\new api project\\focustariffapi\\focustariff\\controllers\\focusapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|solutionrelative:focustariff\\controllers\\focusapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|c:\\users\\91807\\desktop\\new api project\\focustariffapi\\focustariff\\model\\hscodes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|solutionrelative:focustariff\\model\\hscodes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|c:\\users\\91807\\desktop\\new api project\\focustariffapi\\focustariff\\focusdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|solutionrelative:focustariff\\focusdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|c:\\users\\91807\\desktop\\new api project\\focustariffapi\\focustariff\\focustariff.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|solutionrelative:focustariff\\focustariff.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|c:\\users\\91807\\desktop\\new api project\\focustariffapi\\focustariff\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{35DD278B-80CD-4652-8E1C-640D74323B5E}|FocusTariff\\FocusTariff.csproj|solutionrelative:focustariff\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 302,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1a46fd64-28d5-434c-8eb3-17a02d419b53}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FocusTariff.http",
+              "DocumentMoniker": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\FocusTariff.http",
+              "RelativeDocumentMoniker": "FocusTariff\\FocusTariff.http",
+              "ToolTip": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\FocusTariff.http",
+              "RelativeToolTip": "FocusTariff\\FocusTariff.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-11-20T09:00:50.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FocusDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\FocusDbContext.cs",
+              "RelativeDocumentMoniker": "FocusTariff\\FocusDbContext.cs",
+              "ToolTip": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\FocusDbContext.cs",
+              "RelativeToolTip": "FocusTariff\\FocusDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T06:16:25.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HSCodes.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\Model\\HSCodes.cs",
+              "RelativeDocumentMoniker": "FocusTariff\\Model\\HSCodes.cs",
+              "ToolTip": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\Model\\HSCodes.cs",
+              "RelativeToolTip": "FocusTariff\\Model\\HSCodes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T06:04:04.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FocusApiController.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\Controllers\\FocusApiController.cs",
+              "RelativeDocumentMoniker": "FocusTariff\\Controllers\\FocusApiController.cs",
+              "ToolTip": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\Controllers\\FocusApiController.cs",
+              "RelativeToolTip": "FocusTariff\\Controllers\\FocusApiController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T11:19:01.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\Program.cs",
+              "RelativeDocumentMoniker": "FocusTariff\\Program.cs",
+              "ToolTip": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\Program.cs",
+              "RelativeToolTip": "FocusTariff\\Program.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T12:30:26.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\appsettings.json",
+              "RelativeDocumentMoniker": "FocusTariff\\appsettings.json",
+              "ToolTip": "C:\\Users\\91807\\Desktop\\New Api project\\FocusTariffApi\\FocusTariff\\appsettings.json",
+              "RelativeToolTip": "FocusTariff\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-19T12:27:05.036Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
