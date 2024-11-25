@@ -1,0 +1,8 @@
+@FocusTariff_HostAddress = http://localhost:5248
+
+GET {{FocusTariff_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+//http://localhost:5248/api/FocusApi
