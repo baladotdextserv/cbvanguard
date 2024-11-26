@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getAllHsCode } from "@/services/FocusApi";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function List() {
@@ -45,7 +46,11 @@ export default function List() {
             {data.map((item, index) => (
               <TableRow key={index}>
                 <TableCell>{item.chapter}</TableCell>
-                <TableCell className='font-medium'>{item.hS_Code}</TableCell>
+                <TableCell className='font-medium'>
+                  <Link href='/hscode/[hscode]' as={`/hscode/${item.hS_Code}`}>
+                    {item.hS_Code}
+                  </Link>
+                </TableCell>
                 <TableCell className='text-center'>{item.description}</TableCell>
               </TableRow>
             ))}

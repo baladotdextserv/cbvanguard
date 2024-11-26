@@ -1,8 +1,7 @@
-const base_url = process.env.BASE_URL;
-console.log(base_url);
+const base_url = process.env.NEXT_PUBLIC_BASE_URL;
 export async function getAllHsCode(): Promise<any[]> {
   try {
-    const response = await fetch(`https://localhost:7183/api/FocusApi`);
+    const response = await fetch(`${base_url}/FocusApi`);
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -10,8 +9,8 @@ export async function getAllHsCode(): Promise<any[]> {
 
     const data: any[] = await response.json();
     return data;
-  } catch (error) {
-    console.error("There was an error!", error);
+  } catch (err) {
+    console.error("There was an error!", err);
     return [];
   }
 }
