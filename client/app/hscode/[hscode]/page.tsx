@@ -1,7 +1,8 @@
 "use client";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { use, useEffect, useState } from "react";
+import { THSCodeDetails } from "@/types";
+import { useEffect, useState } from "react";
 
 interface PageProps {
   params: {
@@ -13,9 +14,9 @@ export default function Page({ params }: PageProps) {
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
 
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({});
+  const [data, setData] = useState<THSCodeDetails | null>(null);
 
-  const param = use<any>(params);
+  const param = params;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,9 +40,9 @@ export default function Page({ params }: PageProps) {
             Details
           </CardHeader>
           <CardContent className='mt-6'>
-            <h1> hs code: {data.hS_Code}</h1>
-            <h3> chapter: {data.chapter}</h3>
-            <p> Description: {data.description}</p>
+            <h1> hs code: {data?.hS_Code}</h1>
+            <h3> chapter: {data?.chapter}</h3>
+            <p> Description: {data?.description}</p>
           </CardContent>
         </Card>
       )}
