@@ -12,7 +12,7 @@ export async function getAllHsCode(): Promise<THSCodeDetails[]> {
     const data: THSCodeDetails[] = await response.json();
     return data;
   } catch (err) {
-    console.error("There was an error!", err);
+    console.log("There was an error!", err);
     return [];
   }
 }

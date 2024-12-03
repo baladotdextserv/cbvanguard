@@ -4,6 +4,7 @@ import { persistReducer, persistStore} from "redux-persist"
 import storage from 'redux-persist/lib/storage'
 
 import counterReducer from "./counter/counterSlice"
+import customizerReducer from "./customizer/customizerSlice"
 
 const persistConfig = {
     key: 'root',
@@ -12,7 +13,8 @@ const persistConfig = {
 
 export const store = configureStore({
     reducer:{
-        counter:  persistReducer<any>(persistConfig,counterReducer)
+        counter:  persistReducer<any>(persistConfig,counterReducer),
+        customizer: customizerReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false, immutableCheck: false
@@ -20,7 +22,8 @@ export const store = configureStore({
 });
 
 const rootReducer = combineReducers({
-    counter: counterReducer
+    counter: counterReducer,
+    customizer: customizerReducer
 });
 
 export const persistor = persistStore(store);
