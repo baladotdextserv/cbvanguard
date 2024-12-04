@@ -1,7 +1,8 @@
 "use client";
 
 import { ThemeSettings } from "@/utils/theme/Theme";
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Source_Sans_3 } from "next/font/google";
 
 const sourceSans3 = Source_Sans_3({
@@ -15,7 +16,12 @@ export default function MyApp({ children }: { children: React.ReactNode }) {
   const theme = ThemeSettings();
   return (
     <main className={`${sourceSans3.variable}`}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </AppRouterCacheProvider>
     </main>
   );
 }

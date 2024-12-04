@@ -58,8 +58,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sourceSans)"]
-      }
+        sans: ["var(--font-sourceSans)"],
+        "sf-pro": ["var(--sf-pro-display)"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

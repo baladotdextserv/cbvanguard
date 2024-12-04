@@ -1,7 +1,15 @@
-export default function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+import { Link } from "react-scroll";
+
+export default function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   return (
-    <a href={href} className='text-sm font-sans leading-8 text-gray-900'>
+    <Link
+      to={to}
+      smooth={true}
+      duration={700}
+      offset={-100}
+      className='text-xs font-sf-pro font-semibold leading-8 text-gray-900 cursor-pointer'
+    >
       {children}
-    </a>
+    </Link>
   );
 }

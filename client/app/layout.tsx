@@ -1,9 +1,9 @@
+import MyApp from "./app";
 import "./globals.css";
 import Providers from "@/store/providers";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Inter } from "next/font/google";
-import MyApp from "./app";
+import localFont from "next/font/local";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,9 +16,9 @@ const geistMono = localFont({
   weight: "100 900",
 });
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter'
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -34,7 +34,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}>
-        <Providers><MyApp>{children}</MyApp></Providers>
+        <Providers>
+          <MyApp>{children}</MyApp>
+        </Providers>
       </body>
     </html>
   );
