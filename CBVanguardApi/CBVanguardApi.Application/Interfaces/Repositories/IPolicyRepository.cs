@@ -6,5 +6,6 @@ namespace CBVanguardApi.Application.Interfaces.Repositories
     {
         Task<IEnumerable<Policy>> GetAllAsync();
         Task<Policy> GetByIdAsync(string tariffItem);
+        Task<IEnumerable<Policy>> GetPoliciesByTariffPrefixAsync(string prefix);
     }
 }

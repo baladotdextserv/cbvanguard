@@ -23,5 +23,12 @@ namespace CBVanguardApi.Infrastructure.Persistence.Repositories
         {
             return await _context.Policies.FindAsync(tariffItem);
         }
+
+        public async Task<IEnumerable<Policy>> GetPoliciesByTariffPrefixAsync(string prefix)
+{
+    return await _context.Policies
+        .Where(p => p.TariffItem.StartsWith(prefix))
+        .ToListAsync();
+}
     }
 } 
