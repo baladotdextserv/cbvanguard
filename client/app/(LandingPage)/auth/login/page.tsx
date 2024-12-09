@@ -2,15 +2,14 @@
 
 import { setCredentials } from "@/store/auth/authSlice";
 import { useDispatch, useSelector } from "@/store/hooks";
-import { AppState } from "@/store/store";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
-  const themeMode = useSelector((state: AppState) => state.customizer.activeMode);
   const router = useRouter();
+
   const { isAuthenticated } = useSelector(state => state.auth);
 
   useEffect(() => {

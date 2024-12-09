@@ -1,5 +1,4 @@
 import authReducer from "./auth/authSlice";
-import counterReducer from "./counter/counterSlice";
 import customizerReducer from "./customizer/customizerSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
@@ -13,7 +12,6 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: {
-    counter: persistReducer<any>(persistConfig, counterReducer),
     customizer: persistReducer<any>(persistConfig, customizerReducer),
     auth: persistReducer<any>(persistConfig, authReducer),
   },
@@ -25,7 +23,6 @@ export const store = configureStore({
 });
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
   customizer: customizerReducer,
   auth: authReducer,
 });
