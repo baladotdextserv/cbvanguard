@@ -28,5 +28,16 @@ namespace CBVanguardApi.WebApi.Controllers
             if (policy == null) return NotFound();
             return Ok(policy);
         }
+
+        [HttpPost("by-prefix")]
+public async Task<IActionResult> GetPoliciesByPrefix([FromBody] string prefix)
+{
+    var policies = await _policyRepository.GetPoliciesByTariffPrefixAsync(prefix);
+    if (policies == null || !policies.Any())
+    {
+        return NotFound();
+    }
+    return Ok(policies);
+}
     }
 } 
