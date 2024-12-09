@@ -16,20 +16,8 @@ export default function Page() {
     <>
       <Navbar />
       <Hero />
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
       <About />
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
       <Contact />
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
-      <h1 className='text-9xl font-bold'>Example</h1>
     </>
   );
 }
