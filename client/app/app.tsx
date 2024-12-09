@@ -2,7 +2,6 @@
 
 import { ThemeSettings } from "@/utils/theme/Theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Source_Sans_3 } from "next/font/google";
 
 const sourceSans3 = Source_Sans_3({
@@ -12,16 +11,14 @@ const sourceSans3 = Source_Sans_3({
 });
 
 export default function MyApp({ children }: { children: React.ReactNode }) {
-  console.log("Home page");
   const theme = ThemeSettings();
+
   return (
     <main className={`${sourceSans3.variable}`}>
-      <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
-      </AppRouterCacheProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </main>
   );
 }

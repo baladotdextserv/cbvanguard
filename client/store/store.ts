@@ -14,7 +14,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     counter: persistReducer<any>(persistConfig, counterReducer),
-    customizer: customizerReducer,
+    customizer: persistReducer<any>(persistConfig, customizerReducer),
     auth: persistReducer<any>(persistConfig, authReducer),
   },
   middleware: getDefaultMiddleware =>
