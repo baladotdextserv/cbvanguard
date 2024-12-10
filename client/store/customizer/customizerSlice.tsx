@@ -4,6 +4,7 @@ interface StateType {
   activeMode: string;
   activeTheme: string;
   borderRadius: number;
+  isCardShadow?: boolean;
 }
 
 type TActiveMode = "light" | "dark";
@@ -13,6 +14,7 @@ const initialState: StateType = {
   activeMode: "light",
   activeTheme: "GREEN_THEME",
   borderRadius: 7,
+  isCardShadow: true,
 };
 
 export const CustomizerSlice = createSlice({
@@ -24,6 +26,9 @@ export const CustomizerSlice = createSlice({
     },
     setTheme: (state: StateType, action: PayloadAction<TActiveTheme>) => {
       state.activeTheme = action.payload;
+    },
+    setCardShadow: (state: StateType, action) => {
+      state.isCardShadow = action.payload;
     },
   },
 });

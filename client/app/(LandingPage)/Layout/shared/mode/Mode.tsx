@@ -6,7 +6,6 @@ import { AppState } from "@/store/store";
 import { Button } from "@mui/material";
 import Image from "next/image";
 
-// Renamed file to Mode.tsx
 const Mode = () => {
   const dispatch = useDispatch();
   const customizer = useSelector((state: AppState) => state.customizer);

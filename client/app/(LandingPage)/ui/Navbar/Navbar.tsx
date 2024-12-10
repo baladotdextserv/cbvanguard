@@ -5,10 +5,7 @@ import { Button, Stack } from "@mui/material";
 
 const Navbar = () => {
   return (
-    <nav
-      className='flex justify-around sticky top-0 items-center py-4 px-6 shadow'
-      style={{ zIndex: 100 }}
-    >
+    <nav className='flex justify-around sticky top-0 items-center py-4 px-6 shadow'>
       <Stack direction='row' alignItems='center' spacing={6}>
         <div>
           <Logo />
@@ -24,7 +21,7 @@ const Navbar = () => {
             <NavLink to='contact'>Contact</NavLink>
           </li>
           <li>
-            <NavLink to='/contact'>Search Tariff</NavLink>
+            <a href='/search-tariff'>Search Tariff</a>
           </li>
         </ul>
       </Stack>
