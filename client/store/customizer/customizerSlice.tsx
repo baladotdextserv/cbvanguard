@@ -8,7 +8,13 @@ interface StateType {
 }
 
 type TActiveMode = "light" | "dark";
-type TActiveTheme = "GREEN_THEME" | "BLUE_THEME";
+export type TActiveTheme =
+  | "BLUE_THEME"
+  | "AQUA_THEME"
+  | "PURPLE_THEME"
+  | "GREEN_THEME"
+  | "CYAN_THEME"
+  | "ORANGE_THEME";
 
 const initialState: StateType = {
   activeMode: "light",
