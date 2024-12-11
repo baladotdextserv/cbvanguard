@@ -2,7 +2,6 @@ import Logo from "../../Layout/shared/logo";
 import Mode from "../../Layout/shared/mode";
 import CustomizerPanel from "../shared/customizer/CustomizerPanel";
 import NavLink from "./NavLink";
-import { setTheme } from "@/store/customizer/customizerSlice";
 import { useDispatch, useSelector } from "@/store/hooks";
 import { AppState } from "@/store/store";
 import { Button, Fab, Stack, Tooltip } from "@mui/material";
@@ -14,14 +13,6 @@ const Navbar = () => {
 
   const [showDrawer, setShowDrawer] = useState(false);
   const customizer = useSelector((state: AppState) => state.customizer);
-
-  function handleThemeChange() {
-    if (customizer.activeTheme === "GREEN_THEME") {
-      dispatch(setTheme("BLUE_THEME"));
-      return;
-    }
-    dispatch(setTheme("GREEN_THEME"));
-  }
 
   return (
     <>
