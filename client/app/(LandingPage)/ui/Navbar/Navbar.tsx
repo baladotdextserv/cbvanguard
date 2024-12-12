@@ -2,6 +2,7 @@ import Logo from "../../Layout/shared/logo";
 import Mode from "../../Layout/shared/mode";
 import CustomizerPanel from "../shared/customizer/CustomizerPanel";
 import NavLink from "./NavLink";
+import LinkButton from "@/components/custom/LinkButton";
 import { useDispatch, useSelector } from "@/store/hooks";
 import { AppState } from "@/store/store";
 import { Button, Fab, Stack, Tooltip } from "@mui/material";
@@ -15,34 +16,35 @@ const Navbar = () => {
   const customizer = useSelector((state: AppState) => state.customizer);
 
   return (
-    <>
-      <nav className='flex justify-around sticky top-0 items-center py-4 px-6 shadow'>
+    <header className='p-2 sticky top-0 items-center bg-white border-b-gray-300 border-b'>
+      <nav className='flex justify-between items-center'>
         <Stack direction='row' alignItems='center' spacing={6}>
           <div>
             <Logo />
           </div>
-          <ul className='flex space-x-4'>
+          <ul className='flex space-x-4 gap-2'>
             <li>
-              <NavLink to='hero'>Home</NavLink>
+              <NavLink to='hero'>Products</NavLink>
             </li>
             <li>
-              <NavLink to='about'>About</NavLink>
+              <NavLink to='about'>Enterprise</NavLink>
             </li>
             <li>
-              <NavLink to='contact'>Contact</NavLink>
+              <NavLink to='contact'>Customers</NavLink>
             </li>
             <li>
-              <a href='/search-tariff'>Search Tariff</a>
+              <NavLink to='contact'>Company</NavLink>
             </li>
           </ul>
         </Stack>
-        <Stack direction='row' spacing={2}>
+        <Stack direction='row' alignItems={"center"} spacing={2}>
+          <LinkButton text='Sign In' />
           <a href='/auth/login'>
             <Button variant='contained' size='small' color='primary'>
-              Login
+              New User?
             </Button>
           </a>
-          <Mode />
+          {/* <Mode />
           <Tooltip title='Settings'>
             <Fab
               aria-label='settings'
@@ -52,11 +54,11 @@ const Navbar = () => {
             >
               <IconSettings stroke={1.5} />
             </Fab>
-          </Tooltip>
+          </Tooltip> */}
         </Stack>
       </nav>
-      <CustomizerPanel showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
-    </>
+      {/* <CustomizerPanel showDrawer={showDrawer} setShowDrawer={setShowDrawer} /> */}
+    </header>
   );
 };
 

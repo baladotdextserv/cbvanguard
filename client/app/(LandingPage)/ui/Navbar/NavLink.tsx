@@ -1,3 +1,4 @@
+import { sfProMedium, sfProRegular } from "@/utils/fonts";
 import { Link } from "react-scroll";
 
 export default function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -7,7 +8,7 @@ export default function NavLink({ to, children }: { to: string; children: React.
       smooth={true}
       duration={700}
       offset={-100}
-      className='text-xs font-sf-pro font-semibold leading-8 cursor-pointer'
+      className={`text-sm leading-8 cursor-pointer tracking-wide ${sfProMedium.className}`}
     >
       {children}
     </Link>

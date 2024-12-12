@@ -1,5 +1,5 @@
-import DarkLogo from "@/public/dark-logo.svg";
-import LightLogo from "@/public/logo.svg";
+import DarkLogo from "@/public/images/Logo/Sangavy_LOGO_FINAL.png";
+import LightLogo from "@/public/images/Logo/Sangavy_LOGO_FINAL.png";
 import { useSelector } from "@/store/hooks";
 import { AppState } from "@/store/store";
 import Image from "next/image";
@@ -10,13 +10,13 @@ const Logo = () => {
   if (customizer.activeMode === "light") {
     return (
       <Link href='/'>
-        <Image src={LightLogo} width={20} alt='Logo' />
+        <Image src={LightLogo} width={200} alt='Logo' />
       </Link>
     );
   }
   return (
     <Link href='/'>
-      <Image src={DarkLogo} width={20} alt='Logo' />
+      <Image src={DarkLogo} width={200} alt='Logo' />
     </Link>
   );
 };
