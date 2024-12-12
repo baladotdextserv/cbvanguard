@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CBVanguardApi.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/policy")]
     public class PolicyController : ControllerBase
     {
         private readonly IPolicyRepository _policyRepository;
@@ -15,11 +15,11 @@ namespace CBVanguardApi.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetById([FromQuery] string tariffItemId)
+        public async Task<IActionResult> GetById([FromQuery] string tariffItem)
         {
-            if (tariffItemId.Length == 8)
+            if (tariffItem.Length == 8)
             {
-                var policy = await _policyRepository.GetByTariffAsync(tariffItemId);
+                var policy = await _policyRepository.GetByTariffAsync(tariffItem);
                 if (policy == null) return NotFound();
                 return Ok(policy);
             }
@@ -33,10 +33,10 @@ namespace CBVanguardApi.WebApi.Controllers
             return Ok(policies);
         }
 
-        [HttpGet("by-prefix")]
-        public async Task<IActionResult> GetPoliciesByPrefix([FromBody] string prefix)
+        [HttpGet("{tariffPrefix}")]
+        public async Task<IActionResult> GetPoliciesByPrefix(string tariffPrefix)
         {
-            var policies = await _policyRepository.GetPoliciesByTariffPrefixAsync(prefix);
+            var policies = await _policyRepository.GetPoliciesByTariffPrefixAsync(tariffPrefix);
             if (policies == null || !policies.Any())
             {
                 return NotFound();
