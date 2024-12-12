@@ -19,16 +19,17 @@ namespace CBVanguardApi.Infrastructure.Persistence.Repositories
             return await _context.Policies.ToListAsync();
         }
 
-        public async Task<Policy> GetByIdAsync(string tariffItem)
+        public async Task<Policy> GetByTariffAsync(string tariffItem)
         {
-            return await _context.Policies.FindAsync(tariffItem);
+            var policy = await _context.Policies.FindAsync(tariffItem);
+            return policy ?? new Policy();
         }
 
         public async Task<IEnumerable<Policy>> GetPoliciesByTariffPrefixAsync(string prefix)
-{
-    return await _context.Policies
-        .Where(p => p.TariffItem.StartsWith(prefix))
-        .ToListAsync();
-}
+        {
+            return await _context.Policies
+                .Where(p => p.TariffItem.StartsWith(prefix)).OrderBy(p => p.TariffItem)
+                .ToListAsync();
+        }
     }
-} 
+}

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CBVanguardApi.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/policy")]
     public class PolicyController : ControllerBase
     {
         private readonly IPolicyRepository _policyRepository;
@@ -15,29 +15,33 @@ namespace CBVanguardApi.WebApi.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetById([FromQuery] string tariffItem)
+        {
+            if (tariffItem.Length == 8)
+            {
+                var policy = await _policyRepository.GetByTariffAsync(tariffItem);
+                if (policy == null) return NotFound();
+                return Ok(policy);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
             var policies = await _policyRepository.GetAllAsync();
             return Ok(policies);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id)
+        [HttpGet("{tariffPrefix}")]
+        public async Task<IActionResult> GetPoliciesByPrefix(string tariffPrefix)
         {
-            var policy = await _policyRepository.GetByIdAsync(id);
-            if (policy == null) return NotFound();
-            return Ok(policy);
+            var policies = await _policyRepository.GetPoliciesByTariffPrefixAsync(tariffPrefix);
+            if (policies == null || !policies.Any())
+            {
+                return NotFound();
+            }
+            return Ok(policies);
         }
-
-        [HttpPost("by-prefix")]
-public async Task<IActionResult> GetPoliciesByPrefix([FromBody] string prefix)
-{
-    var policies = await _policyRepository.GetPoliciesByTariffPrefixAsync(prefix);
-    if (policies == null || !policies.Any())
-    {
-        return NotFound();
     }
-    return Ok(policies);
 }
-    }
-} 
