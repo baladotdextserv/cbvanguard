@@ -5,7 +5,7 @@ namespace CBVanguardApi.Application.Interfaces.Repositories
     public interface IPolicyRepository
     {
         Task<IEnumerable<Policy>> GetAllAsync();
-        Task<Policy> GetByIdAsync(string tariffItem);
+        Task<Policy> GetByTariffAsync(string tariffItem);
         Task<IEnumerable<Policy>> GetPoliciesByTariffPrefixAsync(string prefix);
     }
 }
