@@ -10,13 +10,13 @@ const Logo = () => {
   if (customizer.activeMode === "light") {
     return (
       <Link href='/'>
-        <Image src={LightLogo} width={200} alt='Logo' />
+        <Image src={LightLogo} width={200} alt='Logo' priority />
       </Link>
     );
   }
   return (
     <Link href='/'>
-      <Image src={DarkLogo} width={200} alt='Logo' />
+      <Image src={DarkLogo} width={200} alt='Logo' priority />
     </Link>
   );
 };

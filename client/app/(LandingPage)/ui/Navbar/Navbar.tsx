@@ -16,12 +16,10 @@ const Navbar = () => {
   const customizer = useSelector((state: AppState) => state.customizer);
 
   return (
-    <header className='p-2 sticky top-0 items-center bg-white border-b-gray-300 border-b'>
+    <header className='p-4 sticky top-0 bg-white border-b-gray-300 border-b'>
       <nav className='flex justify-between items-center'>
+        <Logo />
         <Stack direction='row' alignItems='center' spacing={6}>
-          <div>
-            <Logo />
-          </div>
           <ul className='flex space-x-4 gap-2'>
             <li>
               <NavLink to='hero'>Products</NavLink>
@@ -37,13 +35,17 @@ const Navbar = () => {
             </li>
           </ul>
         </Stack>
-        <Stack direction='row' alignItems={"center"} spacing={2}>
-          <LinkButton text='Sign In' />
-          <a href='/auth/login'>
-            <Button variant='contained' size='small' color='primary'>
-              New User?
-            </Button>
-          </a>
+        <Stack direction='row' alignItems={"center"} spacing={2} className='mr-10'>
+          <LinkButton text='Sign In' className='font-sangavyRegular' />
+          <Button
+            variant='contained'
+            size='small'
+            href='/auth/login'
+            color='primary'
+            sx={{ borderRadius: "0", paddingX: "10px" }}
+          >
+            New User?
+          </Button>
           {/* <Mode />
           <Tooltip title='Settings'>
             <Fab

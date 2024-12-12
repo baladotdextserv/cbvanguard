@@ -9,6 +9,7 @@ interface StateType {
 
 type TActiveMode = "light" | "dark";
 export type TActiveTheme =
+  | "MAIN_THEME"
   | "BLUE_THEME"
   | "AQUA_THEME"
   | "PURPLE_THEME"
@@ -18,7 +19,7 @@ export type TActiveTheme =
 
 const initialState: StateType = {
   activeMode: "light",
-  activeTheme: "GREEN_THEME",
+  activeTheme: "MAIN_THEME",
   borderRadius: 7,
   isCardShadow: true,
 };

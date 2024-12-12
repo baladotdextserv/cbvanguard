@@ -11,11 +11,7 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>((props, 
       component='a'
       href='https://www.example.com'
       color='primary'
-      sx={{
-        background: "none",
-        textDecoration: "underline",
-        "&:hover": { background: "none", color: "primary" },
-      }}
+      size='small'
       ref={ref}
       {...props}
     >
@@ -23,5 +19,7 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>((props, 
     </Button>
   );
 });
+
+LinkButton.displayName = "LinkButton";
 
 export default LinkButton;
