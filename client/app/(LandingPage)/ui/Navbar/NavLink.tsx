@@ -9,7 +9,7 @@ export default function NavLink({ to, children }: { to: string; children: React.
         smooth={true}
         duration={700}
         offset={-100}
-        className={`text-[15px] py-[10px] cursor-pointer font-medium tracking-wide font-sangavyRegular`}
+        className={`text-[15px] cursor-pointer font-medium tracking-wide font-sangavyRegular`}
       >
         {children}
       </Link>
