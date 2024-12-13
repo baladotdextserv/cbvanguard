@@ -1,3 +1,4 @@
+import { useTariffContext } from "@/app/context/TariffContext";
 import { Button, Stack, TextField } from "@mui/material";
 import { IconSearch } from "@tabler/icons-react";
 import React from "react";
@@ -7,10 +8,12 @@ export default function SearchBox() {
   function handleSearch() {
     if (searchRef.current) {
       console.log(searchRef.current.value);
-      searchRef.current.value = "";
+      setSearch(searchRef.current.value);
       searchRef.current.focus();
     }
   }
+
+  const { search, setSearch } = useTariffContext();
 
   return (
     <Stack
@@ -31,6 +34,8 @@ export default function SearchBox() {
         sx={{ border: "none", width: "100%" }}
         InputProps={{
           disableUnderline: true,
+          value: search,
+          onChange: e => setSearch(e.target.value),
         }}
         placeholder="I'm Looking For..."
       />
