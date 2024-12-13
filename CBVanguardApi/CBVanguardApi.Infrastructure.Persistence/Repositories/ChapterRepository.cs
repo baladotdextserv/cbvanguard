@@ -2,7 +2,6 @@ using CBVanguardApi.Application.Interfaces.Repositories;
 using CBVanguardApi.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using CBVanguardApi.Domain.Entities;
 
@@ -17,19 +16,17 @@ namespace CBVanguardApi.Infrastructure.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<string>> GetDistinctChaptersAsync()
-        {
-            return await _context.Policies
-                .Select(p => p.TariffItem.Substring(0, 2))
-                .Distinct()
-                .OrderBy(chapter => chapter)
-                .ToListAsync();
-        }
-
-        public async Task<Chapter> GetChapterByNumberAsync(string chapterNo)
+        public async Task<Chapter> GetChapterByNumberAsync(int chapterNo)
         {
             return await _context.Chapters
-                .FirstOrDefaultAsync(c => c.chapter_no == chapterNo);
+                .FirstOrDefaultAsync(c => c.no == chapterNo);
+        }
+
+        public async Task<IEnumerable<Chapter>> GetAllChaptersAsync()
+        {
+            return await _context.Chapters
+                .OrderBy(c => c.no)
+                .ToListAsync();
         }
     }
 }
