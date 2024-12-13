@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace CBVanguardApi.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/chapter")]
     public class ChapterController : ControllerBase
     {
         private readonly IChapterRepository _chapterRepository;
@@ -15,19 +15,27 @@ namespace CBVanguardApi.WebApi.Controllers
             _chapterRepository = chapterRepository;
         }
 
-        [HttpGet("distinct")]
-        public async Task<IActionResult> GetDistinctChapters()
-        {
-            var chapters = await _chapterRepository.GetDistinctChaptersAsync();
-            return Ok(chapters);
-        }
-
-        [HttpGet("{chapterNo}")] // New endpoint
-        public async Task<IActionResult> GetChapterByNumber(string chapterNo)
+        [HttpGet("{chapterNo}")]
+        public async Task<IActionResult> GetChapterByNumber(int chapterNo)
         {
             var chapter = await _chapterRepository.GetChapterByNumberAsync(chapterNo);
             if (chapter == null) return NotFound();
-            return Ok(chapter);
+
+            var response = new
+            {
+                no = chapter.no,
+                section_no = chapter.section_no,
+                notes = chapter.notes
+            };
+
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllChapters()
+        {
+            var chapters = await _chapterRepository.GetAllChaptersAsync();
+            return Ok(chapters);
         }
     }
-} 
+}

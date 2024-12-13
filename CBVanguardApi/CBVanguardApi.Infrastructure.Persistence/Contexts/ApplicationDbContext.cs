@@ -20,7 +20,7 @@ namespace CBVanguardApi.Infrastructure.Persistence.Contexts
                 .HasKey(p => p.TariffItem);
 
             modelBuilder.Entity<Chapter>().ToTable("chapter");
-            modelBuilder.Entity<Chapter>().HasKey(c => c.chapter_no);
+            modelBuilder.Entity<Chapter>().HasKey(c => c.no);
 
             base.OnModelCreating(modelBuilder);
         }
