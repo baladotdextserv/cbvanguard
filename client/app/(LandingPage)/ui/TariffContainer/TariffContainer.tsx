@@ -1,7 +1,7 @@
 "use client";
 
-import { getAllChapters } from "@/services/chapter";
-import { Chapter } from "@/types";
+import { useTariffContext } from "@/app/context/TariffContext";
+import { Section } from "@/types/section";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
@@ -20,23 +20,15 @@ import {
   Toolbar,
   Tooltip,
 } from "@mui/material";
-import {
-  IconArrowsMaximize,
-  IconArrowsMinimize,
-  IconDeviceGamepad3,
-  IconDeviceGamepad3Filled,
-  IconTable,
-  IconTableRow,
-} from "@tabler/icons-react";
-import axios from "axios";
+import { IconArrowsMaximize, IconArrowsMinimize } from "@tabler/icons-react";
 import * as React from "react";
 
-const ChapterRow = ({
-  chapter,
+const Row = ({
+  section,
   open,
   toggleCollapse,
 }: {
-  chapter: Chapter;
+  section: Section;
   open: boolean;
   toggleCollapse: () => void;
 }) => {
@@ -50,12 +42,12 @@ const ChapterRow = ({
         </TableCell>
         <TableCell>
           <Typography variant='h6' fontWeight='600'>
-            {chapter.no}
+            {section.no}
           </Typography>
         </TableCell>
         <TableCell>
           <Typography color='textSecondary' variant='h6'>
-            {chapter.notes}
+            {section.notes}
           </Typography>
         </TableCell>
       </TableRow>
@@ -64,11 +56,11 @@ const ChapterRow = ({
           <Collapse in={open} timeout='auto' unmountOnExit>
             <Box sx={{ padding: 2 }}>
               <Typography variant='body1' fontWeight='500'>
-                Detailed information for Chapter {chapter.no}
+                Detailed information for Section {section.no}
               </Typography>
               <Typography variant='body2' color='textSecondary'>
-                {/* Add more details about the chapter here */}
-                {chapter.notes || "No details available"}
+                {/* Add more details about the section here */}
+                {section.notes || "No details available"}
               </Typography>
             </Box>
           </Collapse>
@@ -79,20 +71,26 @@ const ChapterRow = ({
 };
 
 const TariffContainer = () => {
-  const [data, setData] = React.useState<Chapter[]>([]);
+  const [data, setData] = React.useState<Section[]>([]);
   const [open, setOpen] = React.useState(false);
   const [openRows, setOpenRows] = React.useState<boolean[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  const tariffContext = useTariffContext();
 
   React.useEffect(() => {
     const loadData = async () => {
-      const fetchedData = await getAllChapters();
-      console.log(fetchedData);
-      setData(fetchedData);
-      setOpenRows(new Array(fetchedData.length).fill(false));
+      if (tariffContext?.sections) {
+        setData(tariffContext.sections);
+        setOpenRows(new Array(tariffContext.sections.length).fill(false));
+      }
+      setLoading(false);
     };
 
-    loadData();
-  }, []);
+    if (tariffContext?.sections) {
+      loadData();
+    }
+  }, [tariffContext?.sections]); // Depend on tariffContext.sections
 
   const toggleCollapse = (index: number) => {
     const newOpenRows = [...openRows];
@@ -148,22 +146,30 @@ const TariffContainer = () => {
                 )}
               </TableCell>
               <TableCell>
-                <Typography variant='h6'>Chapter No</Typography>
+                <Typography variant='h6'>Section No</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h6'>Chapter Notes</Typography>
+                <Typography variant='h6'>Section Notes</Typography>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((chapter, index) => (
-              <ChapterRow
-                key={index}
-                chapter={chapter}
-                open={openRows[index]}
-                toggleCollapse={() => toggleCollapse(index)}
-              />
-            ))}
+            {loading ? (
+              <TableRow>
+                <TableCell colSpan={3} align='center'>
+                  <Typography>Loading...</Typography>
+                </TableCell>
+              </TableRow>
+            ) : (
+              data.map((section, index) => (
+                <Row
+                  key={index}
+                  section={section}
+                  open={openRows[index]}
+                  toggleCollapse={() => toggleCollapse(index)}
+                />
+              ))
+            )}
           </TableBody>
         </Table>
       </TableContainer>

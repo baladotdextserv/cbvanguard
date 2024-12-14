@@ -1,15 +1,19 @@
 "use client";
 
 import { getAllChapters } from "@/services/chapter";
+import { getAllSections } from "@/services/section";
 import { Chapter } from "@/types";
+import { Section } from "@/types/section";
 import React, { createContext, useContext, useEffect } from "react";
 
 interface TariffContextType {
   search: string;
   chapters: Chapter[] | null;
+  sections: Section[] | null;
   currChapter: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   setChapters: React.Dispatch<React.SetStateAction<Chapter[] | null>>;
+  setSections: React.Dispatch<React.SetStateAction<Section[] | null>>;
   setCurrChapter: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -19,9 +23,11 @@ export function TariffProvider({ children }: { children: React.ReactNode }) {
   const [search, setSearch] = React.useState("");
   const [currChapter, setCurrChapter] = React.useState("Hello World");
   const [chapters, setChapters] = React.useState<Chapter[] | null>(null);
+  const [sections, setSections] = React.useState<Section[] | null>(null);
 
   useEffect(() => {
     AllChapters();
+    AllSections();
   }, [search]);
 
   const AllChapters = async () => {
@@ -30,9 +36,24 @@ export function TariffProvider({ children }: { children: React.ReactNode }) {
     setChapters(chapters);
   };
 
+  const AllSections = async () => {
+    const sections = await getAllSections();
+    console.log(sections);
+    setSections(sections);
+  };
+
   return (
     <TariffContext.Provider
-      value={{ search, setSearch, chapters, setChapters, currChapter, setCurrChapter }}
+      value={{
+        search,
+        setSearch,
+        chapters,
+        setChapters,
+        currChapter,
+        setCurrChapter,
+        sections,
+        setSections,
+      }}
     >
       {children}
     </TariffContext.Provider>
