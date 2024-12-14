@@ -6,7 +6,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add Infrastructure Layer
 builder.Services.AddPersistenceInfrastructure(builder.Configuration);
 
 builder.Services.AddCors(options =>
