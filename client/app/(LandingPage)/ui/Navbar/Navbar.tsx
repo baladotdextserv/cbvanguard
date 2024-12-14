@@ -16,10 +16,10 @@ const Navbar = () => {
   const customizer = useSelector((state: AppState) => state.customizer);
 
   return (
-    <header className='p-4 sticky top-0 bg-white border-b-gray-300 border-b'>
-      <nav className='flex justify-between items-center'>
-        <Logo />
-        <Stack direction='row' alignItems='center' spacing={6}>
+    <header className='p-4  bg-white border-b-gray-300 border-b z-[1]'>
+      <nav className='flex justify-between items-center flex-wrap'>
+        <Stack direction='row' alignItems='center' spacing={2}>
+          <Logo />
           <ul className='flex space-x-4 gap-2'>
             <li>
               <NavLink to='hero'>Products</NavLink>

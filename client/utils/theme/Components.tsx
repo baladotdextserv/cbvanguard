@@ -1,7 +1,6 @@
-// project imports
 import "./DefaultColors";
 import { Theme } from "@mui/material/styles";
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google";
 
 const components: any = (theme: Theme) => {
   return {
@@ -25,11 +24,12 @@ const components: any = (theme: Theme) => {
         "#root": {
           height: "100%",
         },
-        '.ql-container.ql-snow, .ql-toolbar.ql-snow': {
-          border: '0 !important', borderRadius: '7px'
+        ".ql-container.ql-snow, .ql-toolbar.ql-snow": {
+          border: "0 !important",
+          borderRadius: "7px",
         },
-        '.ql-editor, .ql-snow *': {
-          fontFamiy: 'inherit !important'
+        ".ql-editor, .ql-snow *": {
+          fontFamiy: "inherit !important",
         },
         "*[dir='rtl'] .buyNowImg": {
           transform: "scaleX(-1)",
@@ -120,10 +120,9 @@ const components: any = (theme: Theme) => {
             backgroundPosition: " 0% 50%",
           },
         },
-        ".rounded-bars .apexcharts-bar-series.apexcharts-plot-series .apexcharts-series path":
-          {
-            clipPath: "inset(0 0 5% 0 round 20px)",
-          },
+        ".rounded-bars .apexcharts-bar-series.apexcharts-plot-series .apexcharts-series path": {
+          clipPath: "inset(0 0 5% 0 round 20px)",
+        },
       },
     },
     MuiButtonGroup: {
@@ -337,6 +336,7 @@ const components: any = (theme: Theme) => {
       styleOverrides: {
         root: {
           borderBottom: `1px solid ${theme.palette.divider}`,
+          padding: "4px",
         },
       },
     },
@@ -444,9 +444,7 @@ const components: any = (theme: Theme) => {
         root: {
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor:
-              theme.palette.mode === "dark"
-                ? theme.palette.grey[200]
-                : theme.palette.grey[300],
+              theme.palette.mode === "dark" ? theme.palette.grey[200] : theme.palette.grey[300],
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
             borderColor: theme.palette.grey[300],
@@ -463,11 +461,11 @@ const components: any = (theme: Theme) => {
     MuiAutocomplete: {
       styleOverrides: {
         root: {
-          '& .MuiOutlinedInput-root': {
-            padding: '4px 9px' 
-          }
-        }
-      }
+          "& .MuiOutlinedInput-root": {
+            padding: "4px 9px",
+          },
+        },
+      },
     },
     MuiTooltip: {
       styleOverrides: {

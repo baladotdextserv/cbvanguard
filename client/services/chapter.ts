@@ -3,13 +3,9 @@ import axios from "axios";
 
 const base = process.env.NEXT_PUBLIC_BASE_URL;
 
-interface GetChaptersResponse {
-  chapters: Chapter[];
-}
-
-export const getAllChapters = async (): Promise<GetChaptersResponse> => {
+export const getAllChapters = async (): Promise<Chapter[]> => {
   try {
-    const res = await axios.get<GetChaptersResponse>(`${base}/api/Chapter/distinct`);
+    const res = await axios.get(`${base}/api/chapter`);
     return res.data;
   } catch (error) {
     console.error("Error fetching chapters:", error);
