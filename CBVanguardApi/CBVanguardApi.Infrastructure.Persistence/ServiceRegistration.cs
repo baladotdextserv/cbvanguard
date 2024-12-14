@@ -19,6 +19,7 @@ namespace CBVanguardApi.Infrastructure.Persistence
 
             services.AddTransient<IPolicyRepository, PolicyRepository>();
             services.AddTransient<IChapterRepository, ChapterRepository>();
+            services.AddTransient<ISectionRepository, SectionRepository>();
         }
     }
 } 
