@@ -9,6 +9,7 @@ export default function SearchBox() {
     if (searchRef.current) {
       console.log(searchRef.current.value);
       setSearch(searchRef.current.value);
+      searchRef.current.value = "";
       searchRef.current.focus();
     }
   }
@@ -34,8 +35,6 @@ export default function SearchBox() {
         sx={{ border: "none", width: "100%" }}
         InputProps={{
           disableUnderline: true,
-          value: search,
-          onChange: e => setSearch(e.target.value),
         }}
         placeholder="I'm Looking For..."
       />

@@ -22,12 +22,12 @@ export function TariffProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     AllChapters();
-  }, [chapters]);
+  }, [search]);
 
   const AllChapters = async () => {
     const chapters = await getAllChapters();
     console.log(chapters);
-    setChapters(chapters.chapters);
+    setChapters(chapters);
   };
 
   return (
