@@ -25,7 +25,11 @@ namespace CBVanguardApi.WebApi.Controllers
             {
                 no = section.no,
                 description = section.description,
-                notes = section.notes
+                name = section.name,
+                from = section.from,
+                to = section.to,
+                issue_date = section.issue_date,
+                issue_by = section.issue_by
             };
 
             return Ok(response);
