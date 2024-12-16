@@ -26,7 +26,7 @@ export default function SearchBox() {
         width: "450px",
         padding: "10px",
         marginY: "1rem",
-        borderRadius: "0",
+        borderRadius: "6px",
       }}
     >
       <TextField

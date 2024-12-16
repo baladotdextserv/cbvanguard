@@ -1,5 +1,7 @@
 "use client";
 
+import ChapterTable from "./ChapterTable";
+import Header from "./Header";
 import { useTariffContext } from "@/app/context/TariffContext";
 import { Section } from "@/types/section";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -20,7 +22,7 @@ import {
   Toolbar,
   Tooltip,
 } from "@mui/material";
-import { IconArrowsMaximize, IconArrowsMinimize } from "@tabler/icons-react";
+import { IconArrowsMaximize, IconArrowsMinimize, IconMenu3 } from "@tabler/icons-react";
 import * as React from "react";
 
 const Row = ({
@@ -34,7 +36,13 @@ const Row = ({
 }) => {
   return (
     <>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }} onClick={toggleCollapse}>
+      <TableRow
+        sx={{
+          "& > *": { borderBottom: "unset" },
+          backgroundColor: open ? "primary.light" : "white",
+        }}
+        onClick={toggleCollapse}
+      >
         <TableCell align='center' width='100px'>
           <IconButton aria-label='expand row' size='small' onClick={toggleCollapse}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -53,16 +61,17 @@ const Row = ({
       </TableRow>
       <TableRow>
         <TableCell colSpan={3} sx={{ paddingBottom: 0, paddingTop: 0 }}>
-          <Collapse in={open} timeout='auto' unmountOnExit>
-            <Box sx={{ padding: 2 }}>
+          <Collapse in={open} timeout='auto' sx={{ padding: "1rem" }} unmountOnExit>
+            {/* <Box sx={{ padding: 2 }}>
               <Typography variant='body1' fontWeight='500'>
                 Detailed information for Section {section.no}
               </Typography>
               <Typography variant='body2' color='textSecondary'>
-                {/* Add more details about the section here */}
+                Add more details about the section here
                 {section.notes || "No details available"}
               </Typography>
-            </Box>
+            </Box> */}
+            <ChapterTable />
           </Collapse>
         </TableCell>
       </TableRow>
@@ -90,7 +99,7 @@ const TariffContainer = () => {
     if (tariffContext?.sections) {
       loadData();
     }
-  }, [tariffContext?.sections]); // Depend on tariffContext.sections
+  }, [tariffContext?.sections]);
 
   const toggleCollapse = (index: number) => {
     const newOpenRows = [...openRows];
@@ -108,7 +117,8 @@ const TariffContainer = () => {
 
   return (
     <Paper sx={{ p: 2 }}>
-      <TableContainer>
+      <TableContainer sx={{ border: theme => `1px solid ${theme.palette.primary.main}` }}>
+        <Header text='Sections' iconNode={<IconMenu3 size={28} />} />
         <Table
           aria-label='collapsible table'
           sx={{
@@ -118,7 +128,7 @@ const TariffContainer = () => {
             },
           }}
         >
-          <TableHead>
+          <TableHead sx={{ backgroundColor: "primary.light" }}>
             <TableRow>
               <TableCell align='center' width='100px'>
                 {openRows.some(open => open) ? (
@@ -146,10 +156,10 @@ const TariffContainer = () => {
                 )}
               </TableCell>
               <TableCell>
-                <Typography variant='h6'>Section No</Typography>
+                <Typography variant='h6'>No</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h6'>Section Notes</Typography>
+                <Typography variant='h6'>Notes</Typography>
               </TableCell>
             </TableRow>
           </TableHead>

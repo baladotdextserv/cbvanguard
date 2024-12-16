@@ -1,14 +1,9 @@
-import { Section } from "@/types/section";
-import axios from "axios";
+import { fetchData } from "./fetch";
+import { Section } from "@/types";
 
 const base = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const getAllSections = async (): Promise<Section[]> => {
-  try {
-    const res = await axios.get(`${base}/api/section`);
-    return res.data;
-  } catch (error) {
-    console.error("Error fetching sections:", error);
-    throw error;
-  }
+  const url = `${base}/api/section`;
+  return fetchData<Section[]>({ url, method: "GET" });
 };

@@ -4,7 +4,12 @@ import { Card, Typography } from "@mui/material";
 export default function Searcher() {
   return (
     <Card
-      sx={{ p: 2, backgroundColor: "primary.main", borderRadius: "0px", height: "300px" }}
+      sx={{
+        p: 2,
+        backgroundColor: "primary.main",
+        borderRadius: "0px",
+        height: "300px",
+      }}
       className='font-sangavyRegular'
     >
       <Typography
