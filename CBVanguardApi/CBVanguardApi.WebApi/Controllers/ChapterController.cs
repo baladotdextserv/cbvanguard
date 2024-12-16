@@ -1,5 +1,6 @@
 using CBVanguardApi.Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace CBVanguardApi.WebApi.Controllers
@@ -24,8 +25,13 @@ namespace CBVanguardApi.WebApi.Controllers
             var response = new
             {
                 no = chapter.no,
-                section_no = chapter.section_no,
-                notes = chapter.notes
+                section_name = chapter.section_name,
+                name = chapter.name,
+                description = chapter.description,
+                from = chapter.from ?? DateTime.MinValue,
+                to = chapter.to ?? DateTime.MinValue,
+                issue_date = chapter.issue_date ?? DateTime.MinValue,
+                issue_by = chapter.issue_by ?? DateTime.MinValue
             };
 
             return Ok(response);
