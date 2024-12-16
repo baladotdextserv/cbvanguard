@@ -12,3 +12,13 @@ export const getAllChapters = async (): Promise<Chapter[]> => {
     throw error;
   }
 };
+
+export const getChaptersBySection = async (sectionName: string): Promise<Chapter[]> => {
+  try {
+    const res = await axios.get(`${base}/api/chapter/section?name=${sectionName}`);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching chapters:", error);
+    throw error;
+  }
+};

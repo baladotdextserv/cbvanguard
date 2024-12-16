@@ -25,6 +25,8 @@ import {
 import { IconArrowsMaximize, IconArrowsMinimize, IconMenu3 } from "@tabler/icons-react";
 import * as React from "react";
 
+const LazyChapterTable = React.lazy(() => import("./ChapterTable"));
+
 const Row = ({
   section,
   open,
@@ -48,30 +50,23 @@ const Row = ({
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell>
+        <TableCell width='200px'>
           <Typography variant='h6' fontWeight='600'>
-            {section.no}
+            {section.name}
           </Typography>
         </TableCell>
         <TableCell>
           <Typography color='textSecondary' variant='h6'>
-            {section.notes}
+            {section.description}
           </Typography>
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell colSpan={3} sx={{ paddingBottom: 0, paddingTop: 0 }}>
           <Collapse in={open} timeout='auto' sx={{ padding: "1rem" }} unmountOnExit>
-            {/* <Box sx={{ padding: 2 }}>
-              <Typography variant='body1' fontWeight='500'>
-                Detailed information for Section {section.no}
-              </Typography>
-              <Typography variant='body2' color='textSecondary'>
-                Add more details about the section here
-                {section.notes || "No details available"}
-              </Typography>
-            </Box> */}
-            <ChapterTable />
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <LazyChapterTable sectionName={section.name} />
+            </React.Suspense>
           </Collapse>
         </TableCell>
       </TableRow>
@@ -155,11 +150,11 @@ const TariffContainer = () => {
                   </Tooltip>
                 )}
               </TableCell>
-              <TableCell>
-                <Typography variant='h6'>No</Typography>
+              <TableCell width='200px'>
+                <Typography variant='h6'>Name</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h6'>Notes</Typography>
+                <Typography variant='h6'>Description</Typography>
               </TableCell>
             </TableRow>
           </TableHead>

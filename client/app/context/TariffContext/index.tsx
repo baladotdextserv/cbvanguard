@@ -1,7 +1,7 @@
 "use client";
 
 import { getAllChapters } from "@/services/chapter";
-import { getAllSections } from "@/services/section";
+import { getAllSections, getSections } from "@/services/section";
 import { Chapter } from "@/types";
 import { Section } from "@/types/section";
 import React, { createContext, useContext, useEffect } from "react";
@@ -27,7 +27,11 @@ export function TariffProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     AllChapters();
-    AllSections();
+    if (search == "") {
+      AllSections();
+    } else {
+      GetSpecificSections(search.slice(0, 2));
+    }
   }, [search]);
 
   const AllChapters = async () => {
@@ -38,6 +42,12 @@ export function TariffProvider({ children }: { children: React.ReactNode }) {
 
   const AllSections = async () => {
     const sections = await getAllSections();
+    console.log(sections);
+    setSections(sections);
+  };
+
+  const GetSpecificSections = async (chapterNo: string) => {
+    const sections = await getSections({ chapterNo });
     console.log(sections);
     setSections(sections);
   };
