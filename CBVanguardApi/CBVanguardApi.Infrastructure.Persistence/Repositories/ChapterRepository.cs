@@ -28,5 +28,10 @@ namespace CBVanguardApi.Infrastructure.Persistence.Repositories
                 .OrderBy(c => c.no)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Chapter>> GetChaptersBySectionAsync(string sectionName)
+        {
+            return await _context.Chapters.Where(c => c.section_name == sectionName).OrderBy(c => c.no).ToListAsync();
+        }
     }
 }

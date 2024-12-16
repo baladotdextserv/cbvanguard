@@ -8,5 +8,6 @@ namespace CBVanguardApi.Application.Interfaces.Repositories
     {
         Task<Chapter> GetChapterByNumberAsync(int chapterNo);
         Task<IEnumerable<Chapter>> GetAllChaptersAsync();
+        Task<IEnumerable<Chapter>> GetChaptersBySectionAsync(string sectionName);
     }
 } 

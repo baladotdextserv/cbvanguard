@@ -43,5 +43,17 @@ namespace CBVanguardApi.WebApi.Controllers
             var chapters = await _chapterRepository.GetAllChaptersAsync();
             return Ok(chapters);
         }
+        
+        [HttpGet("section")]
+        public async Task<IActionResult> GetById([FromQuery] string name)
+        {
+            var chapters = await _chapterRepository.GetChaptersBySectionAsync(name);
+    
+            if (chapters == null || !chapters.Any())
+                return NotFound();
+        
+            return Ok(chapters);
+        }
+
     }
 }
