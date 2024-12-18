@@ -12,5 +12,8 @@ namespace CBVanguardApi.Domain.Entities
         public string? Description { get; set; }
         public string? Unit { get; set; }
         public string? Basic { get; set; }
+        public string? IGST { get; set; }
+        public string? SWS { get; set; }
+        public string? Policy { get; set; }
     }
 }

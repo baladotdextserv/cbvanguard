@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace CBVanguardApi.WebApi.Controllers
 {
     [ApiController]
-    [Route("hscode/header")]
+    [Route("api/hscode/header")]
     public class HsCodeController : ControllerBase
     {
         private readonly IHSCodeRepository _hsCodeRepository;

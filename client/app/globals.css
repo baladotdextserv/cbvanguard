@@ -106,6 +106,9 @@ select {
 
 body {
   font-family: "SF Pro Display", Helvetica, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 :root {

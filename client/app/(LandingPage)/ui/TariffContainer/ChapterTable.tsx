@@ -1,12 +1,19 @@
-import Header from "./Header";
+import Header from "./components/CustomHeader";
+import LoadingSkeleton from "./components/LoadingSkeleton";
+import ToggleAllControl from "./components/ToggleAllControl";
 import { useTariffContext } from "@/app/context/TariffContext";
 import { getChaptersBySection } from "@/services/chapter";
+import { getHsCodeByCode } from "@/services/hscode";
 import { Chapter } from "@/types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
+  Box,
   Collapse,
   IconButton,
+  Paper,
+  Skeleton,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -23,6 +30,8 @@ interface ChapterTableProps {
   sectionName: string;
 }
 
+const LazyHSCodeTable = React.lazy(() => import("./HSCode/MainTable"));
+
 const Row = ({
   chapter,
   open,
@@ -32,6 +41,8 @@ const Row = ({
   open: boolean;
   toggleCollapse: () => void;
 }) => {
+  let value = chapter.no.toString();
+  if (value.length === 1) value = `0${value}`;
   return (
     <>
       <TableRow
@@ -59,8 +70,10 @@ const Row = ({
       </TableRow>
       <TableRow>
         <TableCell colSpan={3} sx={{ paddingBottom: 0, paddingTop: 0 }}>
-          <Collapse in={open} timeout='auto' sx={{ padding: "1rem" }} unmountOnExit>
-            <h1>Test</h1>
+          <Collapse in={open} timeout='auto' sx={{ padding: "4px" }} unmountOnExit>
+            <React.Suspense fallback={<LoadingSkeleton />}>
+              <LazyHSCodeTable code={value} />
+            </React.Suspense>
           </Collapse>
         </TableCell>
       </TableRow>
@@ -101,72 +114,57 @@ function ChapterTable({ sectionName }: ChapterTableProps) {
   };
 
   return (
-    <TableContainer sx={{ border: theme => `1px solid ${theme.palette.primary.main}` }}>
-      <Header text='Chapter' variant='h5' />
-      <Table
-        aria-label='collapsible table'
-        sx={{
-          whiteSpace: {
-            xs: "nowrap",
-            sm: "unset",
-          },
-        }}
-      >
-        <TableHead sx={{ backgroundColor: "primary.light" }}>
-          <TableRow>
-            <TableCell align='center' width='100px'>
-              {openRows.some(open => open) ? (
-                <Tooltip title='Collapse All'>
-                  <IconButton
-                    sx={{ margin: 0 }}
-                    color='inherit'
-                    onClick={collapseAll}
-                    aria-label='collapse all'
-                  >
-                    <IconArrowsMinimize size={18} />
-                  </IconButton>
-                </Tooltip>
-              ) : (
-                <Tooltip title='Expand All'>
-                  <IconButton
-                    sx={{ margin: 0 }}
-                    color='inherit'
-                    onClick={expandAll}
-                    aria-label='expand all'
-                  >
-                    <IconArrowsMaximize size={18} />
-                  </IconButton>
-                </Tooltip>
-              )}
-            </TableCell>
-            <TableCell width='200px'>
-              <Typography variant='h6'>Name</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant='h6'>Description</Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {loading ? (
+    <Paper>
+      <TableContainer sx={{ border: theme => `1px solid ${theme.palette.primary.main}` }}>
+        <Header text='Chapters' variant='h5' />
+        <Table
+          aria-label='collapsible table'
+          sx={{
+            whiteSpace: {
+              xs: "nowrap",
+              sm: "unset",
+            },
+            width: "100%",
+          }}
+        >
+          <TableHead sx={{ backgroundColor: "primary.light" }}>
             <TableRow>
-              <TableCell colSpan={3} align='center'>
-                <Typography>Loading...</Typography>
+              <TableCell align='center' width='100px'>
+                <ToggleAllControl
+                  openRows={openRows}
+                  expandAll={expandAll}
+                  collapseAll={collapseAll}
+                />
+              </TableCell>
+              <TableCell width='200px'>
+                <Typography variant='h6'>Name</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant='h6'>Description</Typography>
               </TableCell>
             </TableRow>
-          ) : (
-            data.map((chapter, index) => (
-              <Row
-                key={index}
-                chapter={chapter}
-                open={openRows[index]}
-                toggleCollapse={() => toggleCollapse(index)}
-              />
-            ))
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {loading ? (
+              <TableRow>
+                <TableCell colSpan={3} align='center'>
+                  <LoadingSkeleton />
+                </TableCell>
+              </TableRow>
+            ) : (
+              data.map((chapter, index) => (
+                <Row
+                  key={index}
+                  chapter={chapter}
+                  open={openRows[index]}
+                  toggleCollapse={() => toggleCollapse(index)}
+                />
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
   );
 }
 

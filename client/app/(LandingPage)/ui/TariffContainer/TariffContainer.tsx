@@ -1,7 +1,9 @@
 "use client";
 
 import ChapterTable from "./ChapterTable";
-import Header from "./Header";
+import Header from "./components/CustomHeader";
+import LoadingSkeleton from "./components/LoadingSkeleton";
+import ToggleAllControl from "./components/ToggleAllControl";
 import { useTariffContext } from "@/app/context/TariffContext";
 import { Section } from "@/types/section";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -63,8 +65,8 @@ const Row = ({
       </TableRow>
       <TableRow>
         <TableCell colSpan={3} sx={{ paddingBottom: 0, paddingTop: 0 }}>
-          <Collapse in={open} timeout='auto' sx={{ padding: "1rem" }} unmountOnExit>
-            <React.Suspense fallback={<div>Loading...</div>}>
+          <Collapse in={open} timeout='auto' sx={{ padding: "4px" }} unmountOnExit>
+            <React.Suspense fallback={<LoadingSkeleton />}>
               <LazyChapterTable sectionName={section.name} />
             </React.Suspense>
           </Collapse>
@@ -126,29 +128,11 @@ const TariffContainer = () => {
           <TableHead sx={{ backgroundColor: "primary.light" }}>
             <TableRow>
               <TableCell align='center' width='100px'>
-                {openRows.some(open => open) ? (
-                  <Tooltip title='Collapse All'>
-                    <IconButton
-                      sx={{ margin: 0 }}
-                      color='inherit'
-                      onClick={collapseAll}
-                      aria-label='collapse all'
-                    >
-                      <IconArrowsMinimize size={18} />
-                    </IconButton>
-                  </Tooltip>
-                ) : (
-                  <Tooltip title='Expand All'>
-                    <IconButton
-                      sx={{ margin: 0 }}
-                      color='inherit'
-                      onClick={expandAll}
-                      aria-label='expand all'
-                    >
-                      <IconArrowsMaximize size={18} />
-                    </IconButton>
-                  </Tooltip>
-                )}
+                <ToggleAllControl
+                  openRows={openRows}
+                  expandAll={expandAll}
+                  collapseAll={collapseAll}
+                />
               </TableCell>
               <TableCell width='200px'>
                 <Typography variant='h6'>Name</Typography>
@@ -162,7 +146,7 @@ const TariffContainer = () => {
             {loading ? (
               <TableRow>
                 <TableCell colSpan={3} align='center'>
-                  <Typography>Loading...</Typography>
+                  <LoadingSkeleton />
                 </TableCell>
               </TableRow>
             ) : (

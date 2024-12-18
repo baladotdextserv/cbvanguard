@@ -7,3 +7,4 @@ export interface THSCodeDetails {
 export * from "./chapter";
 export * from "./section";
 export * from "./policy";
+export * from "./hscode";

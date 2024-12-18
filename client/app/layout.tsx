@@ -2,6 +2,7 @@ import MyApp from "./app";
 import "./globals.css";
 import Providers from "@/store/providers";
 import type { Metadata } from "next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Sangavy",
@@ -15,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+      </Head>
       <body className={`antialiased`}>
         <Providers>
           <MyApp>{children}</MyApp>
