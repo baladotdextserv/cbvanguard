@@ -20,6 +20,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.1",
     "@mui/x-date-pickers": "^5.0.20",
     "@mui/x-tree-view": "^6.17.0",
+    "@next/bundle-analyzer": "^15.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@reduxjs/toolkit": "^2.4.0",
     "@tabler/icons-react": "^3.24.0",

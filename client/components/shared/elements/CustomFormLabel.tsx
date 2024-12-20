@@ -1,20 +1,22 @@
-'use client'
-import React from 'react';
-import { styled } from '@mui/material/styles';
-import { Typography } from '@mui/material';
+"use client";
 
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import React from "react";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomFormLabel = styled((props: any) => (
   <Typography
-    variant="subtitle1"
+    variant='subtitle1'
     fontWeight={600}
     {...props}
-    component="label"
+    component='label'
     htmlFor={props.htmlFor}
   />
 ))(() => ({
-  marginBottom: '5px',
-  marginTop: '25px',
-  display: 'block',
+  marginBottom: "5px",
+  marginTop: "25px",
+  display: "block",
 }));
 
 export default CustomFormLabel;

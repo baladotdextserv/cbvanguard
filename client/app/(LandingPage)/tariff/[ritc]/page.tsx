@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function TariffPage() {
   const parms = useParams();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>(null);
 
   let tariffItem: string;

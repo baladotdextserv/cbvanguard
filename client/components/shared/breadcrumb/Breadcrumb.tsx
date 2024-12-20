@@ -1,18 +1,19 @@
 "use client";
 
-import { Grid, Typography, Box, Breadcrumbs, Theme } from "@mui/material";
+import { Grid, Typography, Breadcrumbs, Theme } from "@mui/material";
 import { IconCircle } from "@tabler/icons-react";
 import Link from "next/link";
 import React from "react";
 
 interface BreadCrumbType {
   subtitle?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items?: any[];
   title: string;
   children?: JSX.Element;
 }
 
-const Breadcrumb = ({ subtitle, items, title, children }: BreadCrumbType) => (
+const Breadcrumb = ({ subtitle, items, title }: BreadCrumbType) => (
   <Grid
     container
     sx={{
@@ -56,33 +57,6 @@ const Breadcrumb = ({ subtitle, items, title, children }: BreadCrumbType) => (
           : ""}
       </Breadcrumbs>
     </Grid>
-    {/* <Grid item xs={12} sm={6} lg={4} display="flex" alignItems="flex-end">
-      <Box
-        sx={{
-          display: { xs: "none", md: "block", lg: "flex" },
-          alignItems: "center",
-          justifyContent: "flex-end",
-          width: "100%",
-        }}
-      >
-        {children ? (
-          <Box sx={{ top: "0px", position: "absolute" }}>{children}</Box>
-        ) : (
-          <>
-            <Box sx={{ top: "0px", position: "absolute" }}>
-              <Image
-                src="/images/breadcrumb/ChatBc.png"
-                alt={"breadcrumbImg"}
-                style={{ width: "165px", height: "165px" }}
-                priority
-                width={165}
-                height={165}
-              />
-            </Box>
-          </>
-        )}
-      </Box>
-    </Grid> */}
   </Grid>
 );
 

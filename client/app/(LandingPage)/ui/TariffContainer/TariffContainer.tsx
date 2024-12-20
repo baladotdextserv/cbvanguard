@@ -1,6 +1,5 @@
 "use client";
 
-import ChapterTable from "./ChapterTable";
 import Header from "./components/CustomHeader";
 import LoadingSkeleton from "./components/LoadingSkeleton";
 import ToggleAllControl from "./components/ToggleAllControl";
@@ -10,7 +9,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
   Typography,
-  Box,
   Paper,
   Collapse,
   IconButton,
@@ -20,11 +18,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  AppBar,
-  Toolbar,
-  Tooltip,
 } from "@mui/material";
-import { IconArrowsMaximize, IconArrowsMinimize, IconMenu3 } from "@tabler/icons-react";
+import { IconMenu3 } from "@tabler/icons-react";
 import * as React from "react";
 
 const LazyChapterTable = React.lazy(() => import("./ChapterTable"));
@@ -53,12 +48,12 @@ const Row = ({
           </IconButton>
         </TableCell>
         <TableCell width='200px'>
-          <Typography variant='h6' fontWeight='600'>
+          <Typography variant='body1' fontWeight='600'>
             {section.name}
           </Typography>
         </TableCell>
         <TableCell>
-          <Typography color='textSecondary' variant='h6'>
+          <Typography color='textSecondary' variant='body1'>
             {section.description}
           </Typography>
         </TableCell>
@@ -78,7 +73,6 @@ const Row = ({
 
 const TariffContainer = () => {
   const [data, setData] = React.useState<Section[]>([]);
-  const [open, setOpen] = React.useState(false);
   const [openRows, setOpenRows] = React.useState<boolean[]>([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -135,10 +129,14 @@ const TariffContainer = () => {
                 />
               </TableCell>
               <TableCell width='200px'>
-                <Typography variant='h6'>Name</Typography>
+                <Typography variant='body1' fontWeight='600'>
+                  Name
+                </Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h6'>Description</Typography>
+                <Typography variant='body1' fontWeight='600'>
+                  Description
+                </Typography>
               </TableCell>
             </TableRow>
           </TableHead>

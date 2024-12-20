@@ -15,16 +15,15 @@ export default function MainTable({ code }: HSCodeTableType) {
   React.useEffect(() => {
     const loadData = async () => {
       const res = await getHsCodeByCode(code);
-      console.log(res);
       if (res != null) {
         setData(res);
-        setOpenRows(new Array(data.length).fill(false));
+        setOpenRows(new Array(res.length).fill(false));
       }
       setLoading(false);
     };
 
     loadData();
-  }, []);
+  }, [code]);
 
   const toggleCollapse = (index: number) => {
     const newOpenRows = [...openRows];

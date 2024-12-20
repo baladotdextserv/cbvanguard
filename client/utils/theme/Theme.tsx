@@ -12,7 +12,6 @@ import _ from "lodash";
 
 export const BuildTheme = (config: any = {}) => {
   const themeOptions = LightThemeColors.find(theme => theme.name === config.theme);
-  console.log(themeOptions);
   const darkthemeOptions = DarkThemeColors.find(theme => theme.name === config.theme);
   const customizer = useSelector((state: AppState) => state.customizer);
   const defaultTheme = customizer.activeMode === "dark" ? baseDarkTheme : baseLightTheme;
@@ -46,7 +45,6 @@ const ThemeSettings = () => {
     direction: "ltr",
     theme: activeTheme,
   });
-  console.log(activeTheme);
   return theme;
 };
 

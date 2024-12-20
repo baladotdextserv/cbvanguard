@@ -1,20 +1,9 @@
 import Logo from "../../Layout/shared/logo";
-import Mode from "../../Layout/shared/mode";
-import CustomizerPanel from "../shared/customizer/CustomizerPanel";
 import NavLink from "./NavLink";
 import LinkButton from "@/components/custom/LinkButton";
-import { useDispatch, useSelector } from "@/store/hooks";
-import { AppState } from "@/store/store";
-import { Button, Fab, Stack, Tooltip } from "@mui/material";
-import { IconSettings } from "@tabler/icons-react";
-import { useState } from "react";
+import { Button, Stack } from "@mui/material";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-
-  const [showDrawer, setShowDrawer] = useState(false);
-  const customizer = useSelector((state: AppState) => state.customizer);
-
   return (
     <header className='p-4  bg-white border-b-gray-300 border-b z-[1]'>
       <nav className='flex justify-between items-center flex-wrap'>
@@ -46,20 +35,8 @@ const Navbar = () => {
           >
             New User?
           </Button>
-          {/* <Mode />
-          <Tooltip title='Settings'>
-            <Fab
-              aria-label='settings'
-              // sx={{ position: "fixed", right: "25px", bottom: "15px" }}
-              size='small'
-              onClick={() => setShowDrawer(true)}
-            >
-              <IconSettings stroke={1.5} />
-            </Fab>
-          </Tooltip> */}
         </Stack>
       </nav>
-      {/* <CustomizerPanel showDrawer={showDrawer} setShowDrawer={setShowDrawer} /> */}
     </header>
   );
 };

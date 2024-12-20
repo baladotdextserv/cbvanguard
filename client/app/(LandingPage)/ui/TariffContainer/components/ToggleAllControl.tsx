@@ -1,6 +1,6 @@
 import UnfoldLessSharpIcon from "@mui/icons-material/UnfoldLessSharp";
 import UnfoldMoreSharpIcon from "@mui/icons-material/UnfoldMoreSharp";
-import { IconButton, Tooltip, useTheme } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 
 type ToggleAllControlProps = {
   color?: string;
@@ -10,13 +10,10 @@ type ToggleAllControlProps = {
 };
 
 export default function ToggleAllControl({
-  color,
   openRows,
   expandAll,
   collapseAll,
 }: ToggleAllControlProps) {
-  const theme = useTheme();
-  const iconColor = color ? color : theme.palette.primary.main;
   return (
     <div>
       {openRows.some(open => open) ? (

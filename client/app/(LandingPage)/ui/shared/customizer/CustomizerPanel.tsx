@@ -1,4 +1,3 @@
-import Scrollbar from "@/components/custom-scroll/Scrollbar";
 import { setTheme, TActiveTheme } from "@/store/customizer/customizerSlice";
 import { useDispatch, useSelector } from "@/store/hooks";
 import { AppState } from "@/store/store";

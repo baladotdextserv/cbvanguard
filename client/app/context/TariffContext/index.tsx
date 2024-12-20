@@ -17,6 +17,7 @@ interface TariffContextType {
   setCurrChapter: React.Dispatch<React.SetStateAction<string>>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const TariffContext = createContext<TariffContextType | any>(undefined);
 
 export function TariffProvider({ children }: { children: React.ReactNode }) {
@@ -36,19 +37,16 @@ export function TariffProvider({ children }: { children: React.ReactNode }) {
 
   const AllChapters = async () => {
     const chapters = await getAllChapters();
-    console.log(chapters);
     setChapters(chapters);
   };
 
   const AllSections = async () => {
     const sections = await getAllSections();
-    console.log(sections);
     setSections(sections);
   };
 
   const GetSpecificSections = async (chapterNo: string) => {
     const sections = await getSections({ chapterNo });
-    console.log(sections);
     setSections(sections);
   };
 

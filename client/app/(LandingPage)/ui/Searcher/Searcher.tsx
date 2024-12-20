@@ -1,5 +1,5 @@
 import SearchBox from "./SearchBox";
-import { Card, Typography } from "@mui/material";
+import { Card } from "@mui/material";
 
 export default function Searcher() {
   return (
@@ -10,15 +10,9 @@ export default function Searcher() {
         borderRadius: "0px",
         height: "300px",
       }}
-      className='font-sangavyRegular'
+      // className='font-sangavyRegular'
     >
-      <Typography
-        variant='h3'
-        sx={{ color: "primary.contrastText", marginTop: "1rem" }}
-        className='text-center w-fit'
-      >
-        AI Searcher
-      </Typography>
+      <h2 className='font-sangavyRegular text-2xl text-white'>AI Searcher</h2>
       <SearchBox />
     </Card>
   );

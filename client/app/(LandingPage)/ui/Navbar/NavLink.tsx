@@ -10,6 +10,7 @@ export default function NavLink({ to, children }: { to: string; children: React.
         duration={700}
         offset={-100}
         className={`text-[15px] cursor-pointer font-medium tracking-wide font-sangavyRegular`}
+        href='www.example.com'
       >
         {children}
       </Link>

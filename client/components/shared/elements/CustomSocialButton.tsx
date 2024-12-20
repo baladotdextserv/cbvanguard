@@ -1,14 +1,16 @@
-'use client'
-import React from 'react';
-import { styled } from '@mui/material/styles';
-import { Button } from '@mui/material';
+"use client";
 
+import { Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import React from "react";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomSocialButton = styled((props: any) => (
-  <Button variant="outlined" size="large" color="inherit" {...props} />
+  <Button variant='outlined' size='large' color='inherit' {...props} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
 
-  '&:hover': {
+  "&:hover": {
     color: theme.palette.primary.main,
   },
 }));

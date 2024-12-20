@@ -66,7 +66,7 @@ namespace CBVanguardApi.Infrastructure.Persistence.Repositories
         public async Task<IEnumerable<HsCode>> GetHSCodesBySubHeaderNoAsync(string subHeaderNo)
         {
             var result = await (from policy in _context.Policies
-                                where policy.TariffItem.StartsWith(subHeaderNo) && policy.TariffItem.Length == 8
+                                where policy.TariffItem.StartsWith(subHeaderNo) && policy.TariffItem != subHeaderNo
                                 select new
                                 {
                                     Hscode = policy.TariffItem,

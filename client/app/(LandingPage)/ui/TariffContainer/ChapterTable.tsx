@@ -1,29 +1,23 @@
 import Header from "./components/CustomHeader";
 import LoadingSkeleton from "./components/LoadingSkeleton";
 import ToggleAllControl from "./components/ToggleAllControl";
-import { useTariffContext } from "@/app/context/TariffContext";
 import { getChaptersBySection } from "@/services/chapter";
-import { getHsCodeByCode } from "@/services/hscode";
 import { Chapter } from "@/types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
-  Box,
   Collapse,
   IconButton,
   Paper,
-  Skeleton,
-  Stack,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Tooltip,
   Typography,
 } from "@mui/material";
-import { IconArrowsMaximize, IconArrowsMinimize, IconListTree } from "@tabler/icons-react";
+import { IconMenu3 } from "@tabler/icons-react";
 import * as React from "react";
 
 interface ChapterTableProps {
@@ -58,12 +52,12 @@ const Row = ({
           </IconButton>
         </TableCell>
         <TableCell width='200px'>
-          <Typography variant='h6' fontWeight='600'>
+          <Typography variant='body1' fontWeight='600'>
             {chapter.name}
           </Typography>
         </TableCell>
         <TableCell>
-          <Typography color='textSecondary' variant='h6'>
+          <Typography color='textSecondary' variant='body1'>
             {chapter.description}
           </Typography>
         </TableCell>
@@ -91,7 +85,7 @@ function ChapterTable({ sectionName }: ChapterTableProps) {
       const res = await getChaptersBySection(sectionName);
       if (res != null) {
         setData(res);
-        setOpenRows(new Array(data.length).fill(false));
+        setOpenRows(new Array(res.length).fill(false));
       }
       setLoading(false);
     };
@@ -116,7 +110,7 @@ function ChapterTable({ sectionName }: ChapterTableProps) {
   return (
     <Paper>
       <TableContainer sx={{ border: theme => `1px solid ${theme.palette.primary.main}` }}>
-        <Header text='Chapters' variant='h5' />
+        <Header text='Chapters' variant='h5' iconNode={<IconMenu3 size={24} />} />
         <Table
           aria-label='collapsible table'
           sx={{
@@ -137,10 +131,14 @@ function ChapterTable({ sectionName }: ChapterTableProps) {
                 />
               </TableCell>
               <TableCell width='200px'>
-                <Typography variant='h6'>Name</Typography>
+                <Typography variant='body1' fontWeight='600'>
+                  Name
+                </Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h6'>Description</Typography>
+                <Typography variant='body1' fontWeight='600'>
+                  Description
+                </Typography>
               </TableCell>
             </TableRow>
           </TableHead>

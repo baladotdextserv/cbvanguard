@@ -3,7 +3,7 @@ import { getHsCodeByCode } from "@/services/hscode";
 import { HSCodeType } from "@/types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { IconButton, Link, Skeleton, TableCell, TableRow, Typography } from "@mui/material";
+import { IconButton, Link, TableCell, TableRow, Typography } from "@mui/material";
 import * as React from "react";
 
 export const SingleRow = ({
@@ -45,7 +45,7 @@ export const SingleRow = ({
           ) : null}
         </TableCell>
         <TableCell width='200px' sx={borderStyle}>
-          <Typography variant='h6' fontWeight='600'>
+          <Typography variant='body1' fontWeight='600'>
             {isIRTC ? (
               <Link href={`/tariff/${hscode.hscode}`} className='underline'>
                 {hscode.hscode}
@@ -66,7 +66,7 @@ export const SingleRow = ({
         >
           <Typography
             color='textSecondary'
-            variant='subtitle1'
+            variant='body1'
             sx={{ lineHeight: "1.5rem", wordSpacing: "3.5px" }}
           >
             {hscode.description}
@@ -88,21 +88,21 @@ export default function Row({ code }: { code: string | null }) {
   const [openRows, setOpenRows] = React.useState<boolean[]>([]);
   const [loading, setLoading] = React.useState(true);
 
-  if (code == null) return null;
-
   React.useEffect(() => {
-    const loadData = async () => {
-      const res = await getHsCodeByCode(code);
-      console.log(res);
-      if (res != null) {
-        setData(res);
-        setOpenRows(new Array(res.length).fill(false));
-      }
-      setLoading(false);
-    };
-
-    loadData();
-  }, []);
+    if (code != null) {
+      const loadData = async () => {
+        const res = await getHsCodeByCode(code);
+        if (res != null) {
+          setData(res);
+          setOpenRows(new Array(res.length).fill(false));
+        }
+        setLoading(false);
+      };
+      loadData();
+    } else {
+      return;
+    }
+  }, [code]);
 
   const toggleCollapse = (index: number) => {
     setOpenRows(prev => {
